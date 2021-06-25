@@ -1,24 +1,25 @@
 {
-    "name": "likesistemas/nomedalib",
+    "name": "likesistemas/webpack-encore",
     "type": "library",
-    "description": "Descriçãoo da biblioteca.",
+    "description": "Biblioteca para integrar o webpack encore no projeto.",
     "repositories": [
         {"type": "composer", "url": "https://composer.likesistemas.com.br/"}
     ],
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "like/json": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0 || ^9.0"
     },
     "autoload": {
         "psr-4": {
-            "Like\\NomeDaLib\\": "src/"
+            "WebpackEncore\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Like\\NomeDaLib\\Tests\\": "tests/"
+            "WebpackEncore\\Tests\\": "tests/"
         }
     },
     "authors": [

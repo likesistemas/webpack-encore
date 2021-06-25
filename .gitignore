@@ -3,3 +3,7 @@
 desktop.ini
 /vendor/
 .env
+node_modules/
+public/
+assets/
+webpack.config.js

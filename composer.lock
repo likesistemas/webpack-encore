@@ -4,8 +4,82 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f71ccf7e78d10379d6904e4fbef2206",
-    "packages": [],
+    "content-hash": "7ed36d2e1997d170bf10cd54c92c0dde",
+    "packages": [
+        {
+            "name": "like/encoding",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/lib-utf8/",
+                "reference": "6422a6b26de61de56fab86dafd102326b285a0ec"
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Like\\Encoding\\": "src-old/",
+                    "Like\\Util\\Encoding\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Like\\Util\\Encoding\\Tests\\": "tests/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Like Sistemas",
+                    "email": "dev@likesistemas.com.br",
+                    "homepage": "https://www.likesistemas.com.br/"
+                }
+            ],
+            "description": "Biblioteca para conversão entre encoding.",
+            "time": "2019-02-11T12:07:23+00:00"
+        },
+        {
+            "name": "like/json",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/lib-json/",
+                "reference": "8c3c91738ad3c3206833eaae0065b548e306c820"
+            },
+            "require": {
+                "ext-json": "*",
+                "like/encoding": "^2.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Like\\Json\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Like\\Json\\Tests\\": "tests/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Like Sistemas",
+                    "email": "dev@likesistemas.com.br",
+                    "homepage": "https://www.likesistemas.com.br/"
+                }
+            ],
+            "description": "Biblioteca para manipulação JSON.",
+            "time": "2019-11-07T14:12:30+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
