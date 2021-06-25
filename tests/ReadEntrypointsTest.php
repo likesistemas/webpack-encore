@@ -13,7 +13,7 @@ class ReadEntrypointsTest extends TestCase {
 	private $instance;
 
 	public function setUp() {
-		$this->instance = ReadEntrypoints::get('tests');
+		$this->instance = ReadEntrypoints::get('tests/valid');
 	}
 
 	public function testInstance() {

@@ -14,7 +14,7 @@ class ReadEntrypoints {
 	/**
 	 * @var array
 	 */
-	private $entrypoints;
+	private $entrypoints = [];
 
 	const PUBLIC_ASSETS = 'public/build';
 	const ENTRYPOINTS = 'entrypoints.json';
@@ -27,6 +27,10 @@ class ReadEntrypoints {
 
 	public function read() {
 		$file = $this->getRaiz() . '/../' . $this->path . '/' . self::ENTRYPOINTS;
+		if (! file_exists($file)) {
+			return;
+		}
+
 		$json = file_get_contents($file);
 		$this->entrypoints = Decode::decode($json);
 	}
@@ -37,6 +41,14 @@ class ReadEntrypoints {
 	}
 
 	public function getEntrypoint($type, $name='app') {
+		if (! isset($this->entrypoints['entrypoints'])) {
+			return [];
+		}
+
+		if (! isset($this->entrypoints['entrypoints'][$name])) {
+			return [];
+		}
+
 		return $this->entrypoints['entrypoints'][$name][$type];
 	}
 

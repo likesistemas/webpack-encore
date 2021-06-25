@@ -1,0 +1,9 @@
+<html>
+<head>
+    <title>Teste</title>
+    {webpack_encore_css}
+</head>
+<body>
+    {webpack_encore_js}
+</body>
+</html>
