@@ -3,7 +3,7 @@
 namespace Like\NomeDaLib\Tests;
 
 use WebpackEncore\ReadEntrypoints;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 class ReadEntrypointsTest extends TestCase {
 	
@@ -12,7 +12,7 @@ class ReadEntrypointsTest extends TestCase {
 	 */
 	private $instance;
 
-	public function setUp() {
+	public function set_up() {
 		$this->instance = ReadEntrypoints::get('tests/valid', false);
 	}
 
