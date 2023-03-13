@@ -8,6 +8,14 @@
       "css": [
         "/build/app.css"
       ]
+    },
+    "app2": {
+      "js": [
+        "/build/app2.js"
+      ],
+      "css": [
+        "/build/app2.css"
+      ]
     }
   }
 }

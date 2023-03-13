@@ -5,7 +5,6 @@ namespace WebpackEncore;
 use Like\Json\Decode;
 
 class ReadEntrypoints {
-	
 	/**
 	 * @var string
 	 */
@@ -40,6 +39,14 @@ class ReadEntrypoints {
 		return dirname(dirname($reflection->getFileName()));
 	}
 
+	public function getEntrypoints() {
+		if (! isset($this->entrypoints['entrypoints']) || ! is_array($this->entrypoints['entrypoints'])) {
+			return [];
+		}
+
+		return array_keys($this->entrypoints['entrypoints']);
+	}
+
 	public function getEntrypoint($type, $name='app') {
 		if (! isset($this->entrypoints['entrypoints'])) {
 			return [];
@@ -52,15 +59,41 @@ class ReadEntrypoints {
 		return $this->entrypoints['entrypoints'][$name][$type];
 	}
 
-	public function getCss($name='app') {
-		return $this->getEntrypoint('css', $name);
+	public function getCss($name=null) {
+		if ($name) {
+			return $this->getEntrypoint('css', $name);
+		}
+
+		return $this->getAllCss();
 	}
 
-	public function getJs($name='app') {
-		return $this->getEntrypoint('js', $name);
+	public function getAllCss() {
+		return $this->getAll('css');
 	}
 
-	public function getJsTags($name='app', $template=self::SCRIPT_TAG) {
+	public function getAllJs() {
+		return $this->getAll('js');
+	}
+
+	public function getAll($type) {
+		$css = [];
+
+		foreach ($this->getEntrypoints() as $entrypoint) {
+			$css = array_merge($css, $this->getEntrypoint($type, $entrypoint));
+		}
+
+		return $css;
+	}
+
+	public function getJs($name=null) {
+		if ($name) {
+			return $this->getEntrypoint('js', $name);
+		}
+
+		return $this->getAllJs();
+	}
+
+	public function getJsTags($name=null, $template=self::SCRIPT_TAG) {
 		$jsFiles = $this->getJs($name);
 		if (! $jsFiles) {
 			return null;
@@ -71,7 +104,7 @@ class ReadEntrypoints {
 		}, '');
 	}
 
-	public function getCssTags($name='app', $template=self::STYLE_TAG) {
+	public function getCssTags($name=null, $template=self::STYLE_TAG) {
 		$cssFiles = $this->getCss($name);
 		if (! $cssFiles) {
 			return null;
@@ -82,7 +115,13 @@ class ReadEntrypoints {
 		}, '');
 	}
 
-	public static function get($publicAssets=self::PUBLIC_ASSETS) {
+	public static function get($publicAssets=self::PUBLIC_ASSETS, $cached=true) {
+		if (! $cached) {
+			$e = new ReadEntrypoints($publicAssets);
+			$e->read();
+			return $e;
+		}
+
 		static $entrypoints;
 
 		if (! isset($entrypoints)) {
