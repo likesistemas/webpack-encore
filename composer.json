@@ -11,7 +11,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0 || ^9.0",
-        "smarty/smarty": "^3.1"
+        "smarty/smarty": "^3.1",
+        "yoast/phpunit-polyfills": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -29,5 +30,11 @@
             "email": "dev@likesistemas.com.br",
             "homepage": "https://www.likesistemas.com.br/"
         }
-    ]
+    ],
+    "scripts": {
+        "fix": "php-cs-fixer fix",
+        "fix:ci": "php-cs-fixer fix --dry-run --stop-on-violation",
+        "test": "phpunit",
+        "analyse": "phpstan analyse"
+    }
 }
